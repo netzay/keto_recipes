@@ -14,6 +14,7 @@ Show list of recipes to see
 
 user types number to see recipe options
 options show ingredients or how to make
+user selects ingredients or how to make to see either
 
 1. https://www.heyketomama.com/keto-peanut-butter-cheesecake-bites/"))
 		name 
@@ -27,5 +28,17 @@ options show ingredients or how to make
 		directions 
 		print_url 
 
-which product do you want to see more about
+
+
+		# recipe_1 = self.new
+		# recipe_1.name = "PB Cheesecake Bites" 
+		# recipe_1.ingredients = "Ingredients"
+		# recipe_1.directions = "Directions"
+		# recipe_1.print_url = "print_url"
+
+		# recipe_2 = self.new
+		# recipe_2.name = "Almond Butter Fat Bombs" 
+		# recipe_2.ingredients = "Ingredients"
+		# recipe_2.directions = "Directions"
+		# recipe_2.print_url = "print_url"
 
