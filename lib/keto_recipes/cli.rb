@@ -17,7 +17,7 @@ class KetoRecipes::CLI
 	def menu
 		input = nil
 		while input != "exit"
-			puts "Type 1 or 2 to see more about the recipe (or list to see choices or exit):"
+			puts "Type the number for the recipe you'd like to see more about, list or exit to leave:"
 			input = gets.strip.downcase
 			
 			if input == "list"
@@ -29,6 +29,7 @@ class KetoRecipes::CLI
 				puts "#{the_recipe.name}" 
 				puts "1. Ingredients"
 				puts "2. Print via URL"
+				puts "Choose 1 or 2 for more info!"
 
 				input = gets.strip.downcase
 					case input

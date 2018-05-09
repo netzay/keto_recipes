@@ -7,8 +7,6 @@ class KetoRecipes::Recipe
 		self.scrape_recipes
 	end
 
-
-
 	def self.scrape_recipes
 		recipes = []
 		
@@ -20,23 +18,21 @@ class KetoRecipes::Recipe
 		recipes
 	end
 
-	def self.details
-		puts "1. Ingredients /n 2. How to & Print-URL"
-
-	end
-
 	def self.scrape_keto_mama_pbc
+		
 		doc = Nokogiri::HTML(open("https://www.heyketomama.com/keto-peanut-butter-cheesecake-bites/"))
 		recipe = self.new
 		recipe.name = doc.search(".tasty-recipes-1663 h2").text.strip
-		recipe.ingredients = doc.search(".tasty-recipe-ingredients").children.css(" li").text.strip
+		# sdoc.css('.showing').each do |showing|
+  # 		showing_id = showing['id'].split('_').last.to_i
+  # 		tags = showing.css('.tags a').map { |tag| tag.text.strip }
+		
+		recipe.ingredients = doc.search('.tasty-recipe-ingredients').children.css('ul').each {|line|puts "#{line}"}
 		recipe.directions = doc.search(".tasty-recipe-instructions").children.css(" li").text.strip
 		recipe.print_url = doc.search("a.button").attr("href").value.strip
-		
+		#binding.pry
 		recipe	
 	end 
-
-	
 
 	def self.scrape_keto_mama_abf
 		doc = Nokogiri::HTML(open("https://www.heyketomama.com/easy-almond-butter-fat-bombs/"))
