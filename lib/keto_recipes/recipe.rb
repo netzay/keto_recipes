@@ -12,6 +12,7 @@ class KetoRecipes::Recipe
 		
 		recipes << self.scrape_keto_mama_pbc
 		recipes << self.scrape_keto_mama_abf
+		recipes << self.scrape_keto_cupcakes
 		#go to keto.mama, find recipe
 		#extract properties
 		#instatiante a recipe
@@ -23,8 +24,8 @@ class KetoRecipes::Recipe
 		doc = Nokogiri::HTML(open("https://www.heyketomama.com/keto-peanut-butter-cheesecake-bites/"))
 		recipe = self.new
 		recipe.name = doc.search(".tasty-recipes-1663 h2").text.strip
-		recipe.ingredients = doc.search(".tasty-recipe-ingredients").children.css("li").map {|line| ingredient = line.text}
-		recipe.directions = doc.search(".tasty-recipe-instructions").children.css("li").map {|line| directions = line.text}
+		recipe.ingredients = doc.search(".tasty-recipe-ingredients").children.css("li").map {|line| line.text}.join("\n")
+		recipe.directions = doc.search(".tasty-recipe-instructions").children.css("li").map {|line| line.text}.join("\n")
 		recipe.print_url = doc.search("a.button").attr("href").value.strip
 		#binding.pry
 		recipe	
@@ -35,9 +36,20 @@ class KetoRecipes::Recipe
 		
 		recipe = self.new
 		recipe.name = doc.search(".tasty-recipes-1678 h2").text
-		recipe.ingredients = doc.search(".tasty-recipe-ingredients").children.css("p").map {|line| ingredient = line.text}
-		recipe.directions = doc.search(".tasty-recipe-instructions").children.css("p").map {|line| directions = line.text}
-		recipe.print_url = doc.search("a.button").attr("href").value
+		recipe.ingredients = doc.search(".tasty-recipe-ingredients").children.css("p").map {|line| line.text}.join("\n")
+		recipe.directions = doc.search(".tasty-recipe-instructions").children.css("p").map {|line| line.text}.join("\n")
+		recipe.print_url = doc.search("a.button").attr("href").value.strip
+		#binding.pry
+		recipe
+	end
+
+	def self.scrape_keto_cupcakes
+		doc = Nokogiri::HTML(open("https://www.heyketomama.com/keto-coconut-flour-cupcakes/"))
+		recipe = self.new
+		recipe.name = doc.search(".tasty-recipes-2275 h2").text
+		recipe.ingredients = doc.search(".tasty-recipe-ingredients").children.css("li").map {|line| line.text}.join("\n")
+		recipe.directions = doc.search(".tasty-recipe-instructions").children.css("li").map {|line| line.text}.join("\n")
+		recipe.print_url = doc.search("a.button").attr("href").value.strip
 		#binding.pry
 		recipe
 	end
