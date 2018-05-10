@@ -23,12 +23,8 @@ class KetoRecipes::Recipe
 		doc = Nokogiri::HTML(open("https://www.heyketomama.com/keto-peanut-butter-cheesecake-bites/"))
 		recipe = self.new
 		recipe.name = doc.search(".tasty-recipes-1663 h2").text.strip
-		# sdoc.css('.showing').each do |showing|
-  # 		showing_id = showing['id'].split('_').last.to_i
-  # 		tags = showing.css('.tags a').map { |tag| tag.text.strip }
-		
-		recipe.ingredients = doc.search('.tasty-recipe-ingredients').children.css('ul').each {|line|puts "#{line}"}
-		recipe.directions = doc.search(".tasty-recipe-instructions").children.css(" li").text.strip
+		recipe.ingredients = doc.search(".tasty-recipe-ingredients").children.css("li").map {|line| ingredient = line.text}
+		recipe.directions = doc.search(".tasty-recipe-instructions").children.css("li").map {|line| directions = line.text}
 		recipe.print_url = doc.search("a.button").attr("href").value.strip
 		#binding.pry
 		recipe	
@@ -39,8 +35,8 @@ class KetoRecipes::Recipe
 		
 		recipe = self.new
 		recipe.name = doc.search(".tasty-recipes-1678 h2").text
-		recipe.ingredients = doc.search(".tasty-recipe-ingredients").children.css("p").text
-		recipe.directions = doc.search(".tasty-recipe-instructions").children.css("p").text
+		recipe.ingredients = doc.search(".tasty-recipe-ingredients").children.css("p").map {|line| ingredient = line.text}
+		recipe.directions = doc.search(".tasty-recipe-instructions").children.css("p").map {|line| directions = line.text}
 		recipe.print_url = doc.search("a.button").attr("href").value
 		#binding.pry
 		recipe
