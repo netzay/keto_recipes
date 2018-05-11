@@ -1,6 +1,8 @@
 require "nokogiri"
 require 'pry'
 require 'open-uri'
+require 'colorize'
+require 'rainbow'
 
 require_relative "./keto_recipes/version"
 require_relative "./keto_recipes/cli"
