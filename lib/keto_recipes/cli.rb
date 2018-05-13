@@ -6,7 +6,7 @@ class KetoRecipes::CLI
 	end
 
 	def list_recipes
-		puts "------------------- Keto Recipes ------------------------".bold
+		puts "------------------- Keto Recipes ------------------------".bold.blue
 		@recipes = KetoRecipes::Scraper.today
 		@recipes.each.with_index(1) do |recipe, i|
 			puts "#{i}. #{recipe.name}".italic.green
@@ -16,11 +16,13 @@ class KetoRecipes::CLI
 	def menu
 		puts "Type the number of the recipe you want to see: ".italic.magenta
 		input = gets.strip.to_i
-
-		recipe = KetoRecipes::Recipe.find(input.to_i)
-
-		print_details(input)
-		repeat
+		if input <= 4
+			print_details(input)
+			repeat
+		else
+			puts "Not a valid entry, please try again."
+		end
+		call
 	end
 
 	def repeat
@@ -28,21 +30,21 @@ class KetoRecipes::CLI
 		puts "-----------------------------------------------------------"
 		puts "Would you like to see another recipe? Enter Y or N".italic.magenta
 		
-		input.gets.strip.downcase
+		input = gets.strip.downcase
 		if input == "y"
-			list_recipes
+			call
 		elsif input == "n"
-			puts "Thanks for stopping by!"
+			puts "Thanks for stopping by!".bold.blue
 			exit
 		else
 			puts "-------------------------------------------------------------------"
-			puts "Hmmm....I don't know what you mean."
+			puts "Hmmm....I don't know what you mean.".italic.red
 		end
 	end
 
 	def print_details(input)
 			the_recipe = @recipes[input-1]
-			puts "#{the_recipe.name}:".bold.green
+			puts "#{the_recipe.name}:".bold
 			puts "Ingredients:".bold 
 			puts "#{the_recipe.ingredients}".blue
 			puts "Directions:".bold
