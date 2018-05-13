@@ -6,7 +6,7 @@ class KetoRecipes::CLI
 	end
 
 	def list_recipes
-		puts "------------------- Keto Recipes ------------------------".bold.blue
+		puts "------------------- Keto Recipes ------------------------".bold.cyan
 		@recipes = KetoRecipes::Scraper.today
 		@recipes.each.with_index(1) do |recipe, i|
 			puts "#{i}. #{recipe.name}".italic.magenta
@@ -20,11 +20,10 @@ class KetoRecipes::CLI
 		if input <= 4 && input != 0
 			print_details(input)
 			repeat
-		
 		else
 			puts "Not a valid entry, please try again....".italic.red
+			call
 		end
-		call
 	end
 
 	def repeat

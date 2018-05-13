@@ -17,7 +17,6 @@ class KetoRecipes::Scraper
 	end
 
 	def self.scrape_keto_mama_pbc
-		
 		doc = Nokogiri::HTML(open("https://www.heyketomama.com/keto-peanut-butter-cheesecake-bites/"))
 		recipe = self.new
 		recipe.name = doc.search(".tasty-recipes-1663 h2").text.strip
@@ -30,7 +29,6 @@ class KetoRecipes::Scraper
 
 	def self.scrape_keto_mama_abf
 		doc = Nokogiri::HTML(open("https://www.heyketomama.com/easy-almond-butter-fat-bombs/"))
-		
 		recipe = self.new
 		recipe.name = doc.search(".tasty-recipes-1678 h2").text
 		recipe.ingredients = doc.search(".tasty-recipe-ingredients").children.css("p").map {|line| line.text}.join("\n")
@@ -51,7 +49,6 @@ class KetoRecipes::Scraper
 		recipe
 	end
 
-
 	def self.scrape_keto_protein_coffee
 		doc = Nokogiri::HTML(open("https://www.heyketomama.com/easy-keto-protein-coffee/"))
 		recipe = self.new
@@ -62,7 +59,5 @@ class KetoRecipes::Scraper
 		#binding.pry
 		recipe
 	end
-
-
 
 end

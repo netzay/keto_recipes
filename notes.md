@@ -27,18 +27,3 @@ user selects ingredients or how to make to see either
 		ingredients 
 		directions 
 		print_url 
-
-
-
-		# recipe_1 = self.new
-		# recipe_1.name = "PB Cheesecake Bites" 
-		# recipe_1.ingredients = "Ingredients"
-		# recipe_1.directions = "Directions"
-		# recipe_1.print_url = "print_url"
-
-		# recipe_2 = self.new
-		# recipe_2.name = "Almond Butter Fat Bombs" 
-		# recipe_2.ingredients = "Ingredients"
-		# recipe_2.directions = "Directions"
-		# recipe_2.print_url = "print_url"
-

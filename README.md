@@ -1,8 +1,6 @@
 # KetoRecipes
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/keto_recipes`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem shows you a list of available recipes to view more details about.  Once the number of the recipe is selected the ingredeints, directions and url is shown.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO: Instructions for using this gem are to choose a number that corresponds with the recipe to view more information about it. When you have finished with one recipe, you are prompted to see if you would like to see another recipe or not. If so, you are shown the list of recipes again to make a selection and if not the program will exit. You will also be alerted if you at any point enter invalid input.
 
 ## Development
 
